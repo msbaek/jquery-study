@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<li class="vacation">
+    <h2>Hawaiian Vacation</h2>
+    <button>Get Price</button>
+    <p>$399.99</p>
+</li>
+</body>
+<script>
+    $(document).ready(new function () {
+        var price = $('<p>From $399.99</p>');
+        // append, prepend, after, before
+        $('.vacation').before(price);
+        $('button').remove();
+    });
+</script>
+</html>
