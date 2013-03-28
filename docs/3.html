@@ -13,10 +13,12 @@
 </body>
 <script>
     $(document).ready(new function () {
-        var price = $('<p>From $399.99</p>');
         // append, prepend, after, before
-        $('.vacation').before(price);
-        $('button').remove();
+        $('button').on('click', function () {
+            var price = $('<p>From $399.99</p>');
+            $('.vacation').append(price);
+            $('button').remove();
+        });
     });
 </script>
 </html>
