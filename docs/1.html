@@ -5,11 +5,28 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>this is header1</h1>
+<h1>Where do you want to go?</h1>
+
+<h2>Travel Destinations</h2>
+
+<p>Plan your next adventure.</p>
+<ul id="destinations">
+    <li>Rome</li>
+    <li>Paris</li>
+    <li class='promo'>Rio</li>
+</ul>
 </body>
 <script>
-    $(document).ready(new function() {
-        alert($("h1").text());
+    $(document).ready(new function () {
+        console.log($("#destinations").text());
+        console.log("-----------------------------------");
+        console.log($("#destinations").find("li").first().text());
+        console.log($("#destinations").find("li").first().next().text());
+        console.log($("#destinations").find("li").first().next().prev().text());
+        console.log("-----------------------------------");
+        console.log($("#destinations").find("li").first().parent().text());
+        console.log("-----------------------------------");
+        console.log($("#destinations").children("li").text());
     });
 </script>
 </html>
