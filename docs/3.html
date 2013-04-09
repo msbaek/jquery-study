@@ -3,20 +3,30 @@
 <head>
     <title></title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+        <!--
+        .highlighted {background: #ffff99;
+            color: #000000;}
+        -->
+    </style>
 </head>
 <body>
+<div id="filters">
+    <button class="onsale-filter">On Sale Now</button>
+    <button class="expiring-filter">Expiring</button>
+</div>
 <ul>
-    <li class="vacation">
+    <li class="vacation onsale" data-price='199.99'>
         <h2>Hawaiian Vacation</h2>
         <button>Get Price</button>
         <p>$399.99</p>
     </li>
-    <li class="vacation">
+    <li class="vacation expiring" data-price='299.99'>
         <h2>Orlando</h2>
         <button>Get Price</button>
         <p>$399.99</p>
     </li>
-    <li class="vacation">
+    <li class="vacation onsale" data-price='399.99'>
         <h2>Visit Japan</h2>
         <button>Get Price</button>
         <p>$399.99</p>
@@ -25,14 +35,22 @@
 </body>
 <script>
     $(document).ready(new function () {
-        // append, prepend, after, before
-        $('button').on('click', function () {
-            var price = $('<p>From $399.99</p>');
-//            $(this).after(price);
-//            $(this).parent().parent().append(price);
-//            $(this).parents('.vacation').append(price);
-            $(this).closest('.vacation').append(price);
+        $('.vacation').on('click', 'button', function () {
+            var vacation = $(this).closest('.vacation');
+            var amount = vacation.data('price');
+            var price = $('<p>From $' + amount + '</p>');
+            vacation.append(price);
             $(this).remove();
+        });
+
+        $('#filters').on('click', '.onsale-filter', function() {
+            $('.highlighted').removeClass('highlighted');
+            $('.vacation').filter('.onsale').addClass('highlighted');
+        });
+
+        $('#filters').on('click', '.expiring-filter', function() {
+            $('.highlighted').removeClass('highlighted');
+            $('.vacation').filter('.expiring').addClass('highlighted');
         });
     });
 </script>
