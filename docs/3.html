@@ -119,9 +119,13 @@
         });
 
         $('#vacations').on('click', '.vacation', function() {
-            $(this).css({'background-color': '#563',
-                        'border-color': '1px solid #967'});
-            $(this).find('.price').show();
+            $(this).toggleClass('highlighted');
+            if($(this).hasClass('highlighted')) {
+                $(this).animate({'top': '-10px'}, 'slow');
+            }
+            else {
+                $(this).animate({'top': '0px'}, 'slow');
+            }
         })
     });
 </script>
