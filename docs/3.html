@@ -21,6 +21,7 @@
     <button class="onsale-filter">On Sale Now</button>
     <button class="expiring-filter">Expiring</button>
 </div>
+<div id="vacations">
 <ul>
     <li class="vacation onsale" data-price='199.99'>
         <h2>Hawaiian Vacation</h2>
@@ -69,6 +70,7 @@
         this is ticket
     </ul>
 </li>
+</div>
 </body>
 <script>
     $(document).ready(new function () {
@@ -111,6 +113,11 @@
             event.preventDefault();
             $(this).closest('.vacation').find('.comments').fadeToggle();
         });
+
+        $('#vacations').on('click', '.vacation', function() {
+            $(this).css('background-color', '#252b30')
+            $(this).css('border-color', '1px solid #967')
+        })
     });
 </script>
 </html>
