@@ -62,13 +62,13 @@
             $('.vacation').filter('.expiring').addClass('highlighted');
         });
 
-        $('.confirmation').on('click', 'button', function() {
-            $(this).closest('.confirmation').find('.ticket').slideDown();
-        });
+        $('.confirmation').on('click', 'button', showTicket);
 
-        $('.confirmation').on('mouseenter', 'button', function() {
+        function showTicket() {
             $(this).closest('.confirmation').find('.ticket').slideDown();
-        });
+        }
+
+        $('.confirmation').on('mouseenter', 'button', showTicket);
     });
 </script>
 </html>
