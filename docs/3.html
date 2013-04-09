@@ -7,6 +7,12 @@
         <!--
         .highlighted {background: #ffff99;
             color: #000000;}
+        .ticket {
+            display: none;
+        }
+        .comments {
+            display: none;
+        }
         -->
     </style>
 </head>
@@ -20,18 +26,49 @@
         <h2>Hawaiian Vacation</h2>
         <button>Get Price</button>
         <p>$399.99</p>
+        <p>
+            Tickets:
+            <input type="number" class="quantity" value="1">
+        </p>
+        <a href="#" class="expand">Show Comments</a>
+        <ul class="comments">
+            this is comments
+        </ul>
     </li>
     <li class="vacation expiring" data-price='299.99'>
         <h2>Orlando</h2>
         <button>Get Price</button>
         <p>$399.99</p>
+        <p>
+            Tickets:
+            <input type="number" class="quantity" value="1">
+        </p>
+        <a href="#" class="expand">Show Comments</a>
+        <ul class="comments">
+            this is comments
+        </ul>
     </li>
     <li class="vacation onsale" data-price='399.99'>
         <h2>Visit Japan</h2>
         <button>Get Price</button>
         <p>$399.99</p>
+        <p>
+            Tickets:
+            <input type="number" class="quantity" value="1">
+        </p>
+        <a href="#" class="expand">Show Comments</a>
+        <ul class="comments">
+            this is comments
+        </ul>
     </li>
+    <p>Total Price: $<span id="total">199.99</span></p>
 </ul>
+<li class="confirmation">
+    <button>FLIGHT DETAILS</button>
+    <ul class="ticket">
+        this is ticket
+    </ul>
+</li>
 </body>
 <script>
     $(document).ready(new function () {
@@ -51,6 +88,28 @@
         $('#filters').on('click', '.expiring-filter', function() {
             $('.highlighted').removeClass('highlighted');
             $('.vacation').filter('.expiring').addClass('highlighted');
+        });
+
+        $('.confirmation').on('click', 'button', showTicket);
+
+        function showTicket() {
+            $(this).closest('.confirmation').find('.ticket').slideDown();
+        }
+
+        $('.confirmation').on('mouseenter', 'button', showTicket);
+
+        $('.vacation').on('keyup', '.quantity', function() {
+            // use + to convert the string to a number
+            var price = +$(this).closest('.vacation').data('price');
+            var quantity = +$(this).val();
+            $('#total').text(price * quantity);
+        });
+
+        $('.vacation').on('click', '.expand', function(event) {
+//            event.stopPropagation();
+// The browser will still handle the click event but will prevent it from “bubbling up” to each parent node.
+            event.preventDefault();
+            $(this).closest('.vacation').find('.comments').fadeToggle();
         });
     });
 </script>
