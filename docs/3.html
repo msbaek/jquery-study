@@ -26,9 +26,10 @@
 <script>
     $(document).ready(new function () {
         $('button').on('click', function () {
-            var amount = $(this).closest('.vacation').data('price');
+            var vacation = $(this).closest('.vacation');
+            var amount = vacation.data('price');
             var price = $('<p>From $' + amount + '</p>');
-            $(this).closest('.vacation').append(price);
+            vacation.append(price);
             $(this).remove();
         });
     });
