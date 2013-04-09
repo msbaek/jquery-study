@@ -25,7 +25,8 @@
 </body>
 <script>
     $(document).ready(new function () {
-        $('button').on('click', function () {
+//        $('.vacation button').on('click', function () {
+        $('.vacation').on('click', 'button', function () {
             var vacation = $(this).closest('.vacation');
             var amount = vacation.data('price');
             var price = $('<p>From $' + amount + '</p>');
