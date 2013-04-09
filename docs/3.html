@@ -13,6 +13,9 @@
         .comments {
             display: none;
         }
+        .price {
+            display: none;
+        }
         -->
     </style>
 </head>
@@ -21,6 +24,7 @@
     <button class="onsale-filter">On Sale Now</button>
     <button class="expiring-filter">Expiring</button>
 </div>
+<div id="vacations">
 <ul>
     <li class="vacation onsale" data-price='199.99'>
         <h2>Hawaiian Vacation</h2>
@@ -34,6 +38,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <li class="vacation expiring" data-price='299.99'>
         <h2>Orlando</h2>
@@ -47,6 +52,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <li class="vacation onsale" data-price='399.99'>
         <h2>Visit Japan</h2>
@@ -60,6 +66,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <p>Total Price: $<span id="total">199.99</span></p>
 </ul>
@@ -69,6 +76,7 @@
         this is ticket
     </ul>
 </li>
+</div>
 </body>
 <script>
     $(document).ready(new function () {
@@ -106,11 +114,19 @@
         });
 
         $('.vacation').on('click', '.expand', function(event) {
-//            event.stopPropagation();
-// The browser will still handle the click event but will prevent it from “bubbling up” to each parent node.
             event.preventDefault();
             $(this).closest('.vacation').find('.comments').fadeToggle();
         });
+
+        $('#vacations').on('click', '.vacation', function() {
+            $(this).toggleClass('highlighted');
+            if($(this).hasClass('highlighted')) {
+                $(this).animate({'top': '-10px'}, 'slow');
+            }
+            else {
+                $(this).animate({'top': '0px'}, 'slow');
+            }
+        })
     });
 </script>
 </html>
