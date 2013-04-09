@@ -7,6 +7,9 @@
         <!--
         .highlighted {background: #ffff99;
             color: #000000;}
+        .ticket {
+            display: none;
+        }
         -->
     </style>
 </head>
@@ -32,6 +35,12 @@
         <p>$399.99</p>
     </li>
 </ul>
+<li class="confirmation">
+    <button>FLIGHT DETAILS</button>
+    <ul class="ticket">
+        this is ticket
+    </ul>
+</li>
 </body>
 <script>
     $(document).ready(new function () {
@@ -51,6 +60,10 @@
         $('#filters').on('click', '.expiring-filter', function() {
             $('.highlighted').removeClass('highlighted');
             $('.vacation').filter('.expiring').addClass('highlighted');
+        });
+
+        $('.confirmation').on('click', 'button', function() {
+            $(this).closest('.confirmation').find('.ticket').slideDown();
         });
     });
 </script>
