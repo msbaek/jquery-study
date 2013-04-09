@@ -13,6 +13,9 @@
         .comments {
             display: none;
         }
+        .price {
+            display: none;
+        }
         -->
     </style>
 </head>
@@ -35,6 +38,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <li class="vacation expiring" data-price='299.99'>
         <h2>Orlando</h2>
@@ -48,6 +52,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <li class="vacation onsale" data-price='399.99'>
         <h2>Visit Japan</h2>
@@ -61,6 +66,7 @@
         <ul class="comments">
             this is comments
         </ul>
+        <p class="price">this is price</p>
     </li>
     <p>Total Price: $<span id="total">199.99</span></p>
 </ul>
@@ -115,8 +121,10 @@
         });
 
         $('#vacations').on('click', '.vacation', function() {
-            $(this).css({'background-color': '#252b30',
-                        'border-color': '1px solid #967'});
+//            $(this).css({'background-color': '#252b30',
+//                        'border-color': '1px solid #967'});
+            $(this).find('.price').css('display', 'block');
+            $(this).find('.price').show();
         })
     });
 </script>
